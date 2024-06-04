@@ -1,0 +1,31 @@
+import { ChatService } from './chat.service';
+import { Prisma } from '@prisma/client';
+import { AuthService } from 'src/auth/auth.service';
+import { Request, Response } from 'express';
+import JoinDto from './chat.service';
+export declare class ChatController {
+    private readonly chatService;
+    private readonly UserService;
+    constructor(chatService: ChatService, UserService: AuthService);
+    setAdmin(body: any, req: Request, res: Response): Promise<void>;
+    unsetAdmin(body: any, req: Request, res: Response): Promise<void>;
+    kickMember(body: any, req: Request, res: Response): Promise<void>;
+    muteMember(body: any, req: Request, res: Response): Promise<void>;
+    unmuteMember(body: any, req: Request, res: Response): Promise<void>;
+    banMember(body: any, req: Request, res: Response): Promise<void>;
+    unbanMember(body: any, req: Request, res: Response): Promise<void>;
+    getFriends(req: Request, res: Response): Promise<void>;
+    inviteFriends(req: Request, res: Response, id: string, body: any): Promise<void>;
+    create(createChatDto: Prisma.ChannelsCreateInput, req: Request, res: Response): Promise<void>;
+    join(joinDto: JoinDto, req: Request, res: Response): Promise<void>;
+    findAll(req: Request, res: Response): Promise<void>;
+    findOne(id: string, req: Request, res: Response): Promise<void>;
+    getAllChannelMembers(id: string, req: Request, res: Response): Promise<void>;
+    getChannelMember(id: string, req: Request, res: Response): Promise<void>;
+    updateName(req: Request, res: Response, id: string, body: any): Promise<void>;
+    UpdataAvatar(req: Request, res: Response, id: string, body: any): Promise<void>;
+    leaveChannel(id: string, req: Request, res: Response): Promise<void>;
+    removeAll(req: Request, res: Response): Promise<void>;
+    remove(id: string, req: Request, res: Response): Promise<void>;
+    RemoveChat(id: string, req: Request, res: Response): Promise<void>;
+}

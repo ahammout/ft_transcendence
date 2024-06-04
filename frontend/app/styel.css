@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root{
+
+    --main-color:#5AE4A7;
+    --Second-coloer:#E3F9EE;
+    --third-colore:#1C2E35;
+    
+    --main-transition:0.3s;
+}
+
+*{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.container{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width:768px)
+{
+    .container{
+        width: 750px;
+    }
+    .container .info p{
+        text-align: center;
+        font-size: small;
+        
+    }
+}
+@media (max-width:768px)
+{
+    .container {
+        flex-wrap: wrap;
+    }
+
+    .container h2,
+    .landing .info p {
+        text-align: center !important;
+    }
+    .container .imgeee img{
+        display: none;
+    }
+    .container .info p{
+        text-align: center;
+        
+        
+    }
+    .container .buttons  a{
+        gap: 1;
+    }
+}
+@media (min-width:992px)
+{
+    .container{
+        width: 970px;
+    }
+}
+@media (min-width:1200px)
+{
+    .container{
+        width: 1170px;
+    }
+}
+
+header {
+    -webkit-box-shadow: 0 0 15px var(--Second-coloer) ;
+    -moz-box-shadow: 0 0 15px var(--Second-coloer) ;
+    box-shadow: 0 0 15px var(--Second-coloer);
+    background-color: var(--Second-coloer);
+}
+
+/* header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+} */
+header .container {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .main-nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo{
+    
+    font-weight: bold;
+    position: relative;
+    top: 0;
+    width: 50px;
+    height:50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .sing-btn-header {
+    display: block;
+    background-color: var(--main-color);
+    padding: 15px 15px;
+    border-radius: 25px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: var(--main-transition);
+}
+
+header .sing-btn-header:hover{
+    background-color: var(--third-colore);
+}
+
+.landing {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+}
+.landing .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.landing .info {
+    flex: 1;
+    width: 600px;
+}
+.landing .info h2 {
+    font-size: 75px;
+    width: 350px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #333;
+}
+.landing .info h2 span {
+    color: var(--main-color);
+}
+.landing .info p {
+    margin: 25px 0;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #888;
+}
+.landing .info .buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.landing .info .buttons a {
+    width: 150px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+}
+.landing .info .buttons a:nth-child(1),
+.landing .buttons a:nth-child(2)::before {
+    background-image: linear-gradient(98deg,
+    #21f3aa 0%,
+    #2196F3 100%);
+}
+.landing .info .buttons a:nth-child(2) {
+    border: 2px solid #1b2e35;
+    color: var(--third-colore);
+    position: relative;
+    overflow: hidden;
+    transition: var(--main-transition);
+}
+.landing .buttons a:nth-child(2)::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+    z-index: -1;
+    transition: var(--main-transition);
+}
+.landing .buttons a:nth-child(2):hover::before {
+    width: 100%;
+}
+.landing .buttons a:nth-child(2):hover {
+    color: #fff;
+}
+.landing .imge {
+    width: 100%;
+    max-width: 600px;
+}
+.landing .imge img { 
+    width: 600px;
+}

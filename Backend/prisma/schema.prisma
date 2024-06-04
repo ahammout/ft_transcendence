@@ -1,0 +1,178 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// model User {
+//   id    Int     @default(autoincrement()) @id
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   email String  @unique
+//   hash String
+//   hashedRt String?
+//   name  String?
+//   firstName String
+//   lastName  String
+//   nickname String
+//   statues Boolean @default(false)
+//   rank Int
+//   level Int
+//   password String
+//   @@map("Users")
+
+// }
+
+model User {
+  id        Int           @id @default(autoincrement())
+	nickname	String				@unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email String  @unique
+  firstName String
+  lastName  String
+  hashedRt    String? 
+  avatar    String?
+  password String
+  updateState Boolean? @default(false)
+  state State @default(OFFLINE)
+  faState Boolean? @default(false)
+  twoFactorEnabled Boolean?  @default(false)
+  is2FAuthenticated Boolean?  @default(false)
+  twoFactorSecret String?
+
+  wins			Int				@default(0)
+	loses			Int				@default(0)
+
+notifications Notification[]
+
+sender   frinds[] @relation("UserToFriends")
+reciever frinds[] @relation("FriendToFriends")
+
+
+  membership Membership[]
+  Messages  Messages[]
+	games			UserOnGame[]
+
+}
+
+model Notification {
+  id          Int    @id @default(autoincrement())
+  owner        User      @relation(fields: [ownerId], references: [id])
+  ownerId      Int
+  message     String
+  read        Boolean
+  createdAt   DateTime @default(now())
+}
+
+model Game {
+	id						String			@id @default(uuid()) @unique
+	player1				String
+	player2				String
+	player1Score	Int
+	player2Score	Int
+	winner				String
+  createdAt			DateTime		@default(now())
+	users					UserOnGame[]
+}
+ 
+model frinds {
+  id          Int    @id @default(autoincrement())
+  user        User      @relation("UserToFriends", fields: [userId], references: [id])
+  userId      Int
+  friend      User      @relation("FriendToFriends", fields: [friendId], references: [id])
+  friendId    Int
+  status      Status
+  block       Boolean
+
+}
+
+model UserOnGame {
+	user		User @relation(fields: [userId], references: [id])
+	userId	Int
+	game		Game @relation(fields: [gameId], references: [id])
+	gameId	String
+
+	@@id([userId, gameId])
+}
+
+model Channels {
+    id          String    @id @default(uuid())
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    name        String    @unique
+    avatar      String?
+    password    String?
+    subject     String?
+    type        Type
+    members     Membership[]
+    Messages    Messages[]
+    mute        Mute[]
+}
+
+model Membership {
+  id          String    @id @default(uuid())
+  member      User      @relation(fields: [memberId], references: [id])
+  channel     Channels  @relation(fields: [channelId], references: [id])
+  channelId   String
+  memberId    Int
+  role        Role
+  ban         Boolean
+  status      Boolean
+  mute        Mute?
+}
+
+model Mute {
+  id        String    @id @default(uuid())
+  channel     Channels  @relation(fields: [channelId], references: [id])
+  channelId   String
+  member    Membership  @relation(fields: [memberId], references: [id])
+  memberId  String         @unique
+  muteDate  DateTime    @default(now())
+  duration  Int
+}
+
+model Messages {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  sender    User      @relation(fields: [senderId], references: [id])
+  channel   Channels  @relation(fields: [channelId], references: [id])
+  senderId  Int
+  channelId String
+  content   String
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  BASIC
+}
+
+enum Type {
+  PUBLIC
+  PROTECTED
+  PRIVATE
+  DIRECT
+}
+
+enum Status {
+  PENDING
+  ACCEPTED
+  REJECTED
+  BLOCKED
+}
+
+enum State {
+  ONLINE
+  OFFLINE
+  ONGAME
+}

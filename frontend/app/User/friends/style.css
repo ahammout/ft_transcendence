@@ -1,0 +1,99 @@
+
+.container99 {
+    flex-direction: row;
+    margin-top: 50px;
+}
+.Settings {
+    width: 100%;
+}
+
+.Settings .box-2 h1{
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}
+.Settings .box-2 table {
+    width: 100%;
+}
+.Settings .box-2 table thead tr{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #7eabac;
+    padding: 15px 20px;
+}
+.Settings .box-2 .MemberList {
+    height: 900px;
+    overflow-y: auto;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.Settings .box-2 .MemberListTb {
+        /* background-color: #fff; */
+        border-radius: 10px;
+        /* margin-top: 20px; */
+        overflow: scroll;
+        
+}
+.Settings .box-2 .MemberListTb tr {
+    margin: 0;
+    padding: 10px;
+    /* width: 100%; */
+    /* margin-top: 20px; */
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 20%);
+    background-color: transparent;
+    border: 1px solid #b2b2b2dd;
+    margin-top: 10px;
+}
+.MemberListTb .emptyTabP {
+  text-align: center;
+}
+.infos {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.infos p {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.online-infos {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 10px;
+}
+.online-infos .text-sm {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.active {
+  text-decoration: underline;
+  color: #fff;
+}
+@media (max-width:445px) {
+  .Settings .box-2 table thead tr {
+    min-width: 250px;
+  }
+  .Settings .box-2 .MemberList {
+    height: calc(100vh - 300px);
+    min-width: 250px 
+  }
+  .Settings .box-2 .MemberListTb tr {
+    padding: 5px;
+  }
+  .MemberListTb .ph {
+    width: 35px;
+    height: 35px;
+  }
+  .Accpt, .blockk, .btnf { 
+    width: 50px;
+    font-size: 14px;
+  }
+  .MemberListTb .infos {
+    font-size: 14px;
+  }
+}

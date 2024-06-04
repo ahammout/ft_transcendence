@@ -1,0 +1,1 @@
+//# sourceMappingURL=getway.servise.js.map

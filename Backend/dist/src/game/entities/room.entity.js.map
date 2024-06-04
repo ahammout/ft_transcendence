@@ -1,0 +1,1 @@
+{"version":3,"file":"room.entity.js","sourceRoot":"","sources":["../../../../src/game/entities/room.entity.ts"],"names":[],"mappings":";;;AAAA,mCAAoC;AAIpC,MAAa,IAAI;IAMb,YAAY,IAAU,EAAE,MAAc;QAJtC,YAAO,GAAkB,EAAE,CAAC;QAKxB,IAAI,CAAC,EAAE,GAAG,IAAA,mBAAU,GAAE,CAAC;QACvB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;IACzB,CAAC;CACJ;AAXD,oBAWC"}
